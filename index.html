@@ -10,7 +10,6 @@
 <body>
     <div class="topnav">
         <a class="active" href="index.html">Home</a>
-        <a href="detalhes.html">Detalhes</a>
         <a href="forecast.html">Forecast 5 dias/ 3 horas</a>
         <a href="favoritos.html">Favoritos</a>
     </div>
@@ -28,7 +27,7 @@
     <div class="container">
 
         <center><div class="row form-group form-inline" id="rowDiv">
-            <input type="text" name="city" id="city" class="form-control" placeholder="Cidade/País">
+            <input type="text" name="city" id="city" class="form-control" placeholder="Ex.: Cidade, País">
             <button class="btn btn-primary" onclick="btnPesquisar()" >Pesquisar</button>
         </div></center>
 
@@ -46,41 +45,45 @@
                 <tr id="linhahistorico" style="display: none;">
                     <td></td>
                     <td style="text-align: center">Não há histórico</td>
-                    <td class="thopcoes"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td class="thopcoes"></td>
                 </tr>
                 <tr id="linha1" style="display: none;">
-                    <td id="local1"></td>
-                    <td><p>Temperatura: <span id="tmp1"></span>°C</p><p>Humidade: <span id="hmd1"></span>%</p></td>
-                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td><a class="btn btn-block" id="local1"></a></td>
+                    <td><p>Temperatura: <span id="tmp1"></span>°C</p><p><img id="icon1" src="" alt="Icon do Tempo"><span id="dsc1"></span></p></td>
+                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
                 </tr>
                 <tr id="linha2" style="display: none;">
-                    <td id="local2"></td>
-                    <td><p>Temperatura: <span id="tmp2"></span>°C</p><p>Humidade: <span id="hmd2"></span>%</p></td>
-                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span  class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td><a class="btn btn-block" id="local2"></a></td>
+                    <td><p>Temperatura: <span id="tmp2"></span>°C</p><p><img id="icon2" src="" alt="Icon do Tempo"><span id="dsc2"></span></p></td>
+                    <td class="thopcoes btn btn-block" onclick=""><span  class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
                 </tr>
                 <tr id="linha3" style="display: none;">
-                    <td id="local3"></td>
-                    <td><p>Temperatura: <span id="tmp3"></span>°C</p><p>Humidade: <span id="hmd3"></span>%</p></td>
-                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ></span></td>
+                    <td><a class="btn btn-block" id="local3"></a></td>
+                    <td><p>Temperatura: <span id="tmp3"></span>°C</p><p><img id="icon3" src="" alt="Icon do Tempo"><span id="dsc3"></span></p></td>
+                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ></span></td>
                 </tr>
                 <tr id="linha4" style="display: none;">
-                    <td id="local4"></td>
-                    <td><p>Temperatura: <span id="tmp4"></span>°C</p><p>Humidade: <span id="hmd4"></span>%</p></td>
-                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td><a class="btn btn-block" id="local4"></a></td>
+                    <td><p>Temperatura: <span id="tmp4"></span>°C</p><p><img id="icon4" src="" alt="Icon do Tempo"><span id="dsc4"></span></p></td>
+                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
                 </tr>
                 <tr id="linha5" style="display: none;">
-                    <td id="local5"></td>
-                    <td><p>Temperatura: <span id="tmp5"></span>°C</p><p>Humidade: <span id="hmd5"></span>%</p></td>
-                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td><a class="btn btn-block" id="local5"></a></td>
+                    <td><p>Temperatura: <span id="tmp5"></span>°C</p><p><img id="icon5" src="" alt="Icon do Tempo"><span id="dsc5"></span></p></td>
+                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
                 </tr>
                 <tr id="linha6" style="display: none;">
-                    <td id="local6"></td>
-                    <td><p>Temperatura: <span id="tmp6"></span>°C</p><p>Humidade: <span id="hmd6"></span>%</p></td>
-                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td><a class="btn btn-block" id="local6"></a></td>
+                    <td><p>Temperatura: <span id="tmp6"></span>°C</p><p><img id="icon6" src="" alt="Icon do Tempo"><span id="dsc6"></span></p></td>
+                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
                 </tr>
             </table>
         </div>
     </div>
+
+    <div class="bg"></div>
+
+
     <br>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
