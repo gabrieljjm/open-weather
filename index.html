@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="detalhes.html">Detalhes</a>
+        <a href="forecast.html">Forecast 5 dias/ 3 horas</a>
+        <a href="favoritos.html">Favoritos</a>
+    </div>
+
+    <div class="jumbotron">
+            <div class="container">
+                <center><p>O mecanismo de pesquisa é simples de utilizar:</p></center>
+                <p style="text-indent:40px">Para torná-lo mais preciso, coloque o nome da cidade, vírgula, código de país de duas letras (ISO3166). Você receberá todas as cidades apropriadas no país escolhido.</p>
+                <p style="text-indent:40px">A ordem é importante - primeiro é o nome da cidade, depois vírgula e por ultimo o país. Exemplo - Londres, GB ou Nova York, EUA.</p>
+            </div>
+    </div>
+
+    <br>
+
+    <div class="container">
+
+        <center><div class="row form-group form-inline" id="rowDiv">
+            <input type="text" name="city" id="city" class="form-control" placeholder="Cidade/País">
+            <button class="btn btn-primary" onclick="btnPesquisar()" >Pesquisar</button>
+        </div></center>
+
+    </div>
+
+    <br>
+    <div>
+        <div class="container">
+            <table class="table table-responsive table-hover table-striped table-bordered table-condensed" align="center">
+                <tr>
+                    <th>Cidade/País</th>
+                    <th>Dados</th>
+                    <th class="thopcoes"></th>
+                </tr>
+                <tr id="linhahistorico" style="display: none;">
+                    <td></td>
+                    <td style="text-align: center">Não há histórico</td>
+                    <td class="thopcoes"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                </tr>
+                <tr id="linha1" style="display: none;">
+                    <td id="local1"></td>
+                    <td><p>Temperatura: <span id="tmp1"></span>°C</p><p>Humidade: <span id="hmd1"></span>%</p></td>
+                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                </tr>
+                <tr id="linha2" style="display: none;">
+                    <td id="local2"></td>
+                    <td><p>Temperatura: <span id="tmp2"></span>°C</p><p>Humidade: <span id="hmd2"></span>%</p></td>
+                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span  class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                </tr>
+                <tr id="linha3" style="display: none;">
+                    <td id="local3"></td>
+                    <td><p>Temperatura: <span id="tmp3"></span>°C</p><p>Humidade: <span id="hmd3"></span>%</p></td>
+                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ></span></td>
+                </tr>
+                <tr id="linha4" style="display: none;">
+                    <td id="local4"></td>
+                    <td><p>Temperatura: <span id="tmp4"></span>°C</p><p>Humidade: <span id="hmd4"></span>%</p></td>
+                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                </tr>
+                <tr id="linha5" style="display: none;">
+                    <td id="local5"></td>
+                    <td><p>Temperatura: <span id="tmp5"></span>°C</p><p>Humidade: <span id="hmd5"></span>%</p></td>
+                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                </tr>
+                <tr id="linha6" style="display: none;">
+                    <td id="local6"></td>
+                    <td><p>Temperatura: <span id="tmp6"></span>°C</p><p>Humidade: <span id="hmd6"></span>%</p></td>
+                    <td class="thopcoes btn btn-block" onclick="abreDetalhes()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
