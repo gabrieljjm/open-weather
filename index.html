@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="csss/style.css">
     <title>Home</title>
 </head>
 
 <body>
-    <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="forecast.html">Forecast 5 dias/ 3 horas</a>
-        <a href="favoritos.html">Favoritos</a>
-    </div>
+
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="forecast.html">Forecast 5 dias/ 3 horas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="favoritos.html">Favoritos</a>
+            </li>
+        </ul>
+    </nav>
 
     <div class="jumbotron">
             <div class="container">
@@ -36,7 +44,7 @@
     <br>
     <div>
         <div class="container">
-            <table class="table table-responsive table-hover table-striped table-bordered table-condensed" align="center">
+            <table class="table table-hover table-striped table-bordered table-condensed" align="center">
                 <tr>
                     <th>Cidade/País</th>
                     <th>Dados</th>
@@ -50,41 +58,39 @@
                 <tr id="linha1" style="display: none;">
                     <td><a class="btn btn-block" id="local1"></a></td>
                     <td><p>Temperatura: <span id="tmp1"></span>°C</p><p><img id="icon1" src="" alt="Icon do Tempo"><span id="dsc1"></span></p></td>
-                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
                 </tr>
                 <tr id="linha2" style="display: none;">
                     <td><a class="btn btn-block" id="local2"></a></td>
                     <td><p>Temperatura: <span id="tmp2"></span>°C</p><p><img id="icon2" src="" alt="Icon do Tempo"><span id="dsc2"></span></p></td>
-                    <td class="thopcoes btn btn-block" onclick=""><span  class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
                 </tr>
                 <tr id="linha3" style="display: none;">
                     <td><a class="btn btn-block" id="local3"></a></td>
                     <td><p>Temperatura: <span id="tmp3"></span>°C</p><p><img id="icon3" src="" alt="Icon do Tempo"><span id="dsc3"></span></p></td>
-                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ></span></td>
+                    <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
                 </tr>
                 <tr id="linha4" style="display: none;">
                     <td><a class="btn btn-block" id="local4"></a></td>
                     <td><p>Temperatura: <span id="tmp4"></span>°C</p><p><img id="icon4" src="" alt="Icon do Tempo"><span id="dsc4"></span></p></td>
-                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
                 </tr>
                 <tr id="linha5" style="display: none;">
                     <td><a class="btn btn-block" id="local5"></a></td>
                     <td><p>Temperatura: <span id="tmp5"></span>°C</p><p><img id="icon5" src="" alt="Icon do Tempo"><span id="dsc5"></span></p></td>
-                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
                 </tr>
                 <tr id="linha6" style="display: none;">
                     <td><a class="btn btn-block" id="local6"></a></td>
                     <td><p>Temperatura: <span id="tmp6"></span>°C</p><p><img id="icon6" src="" alt="Icon do Tempo"><span id="dsc6"></span></p></td>
-                    <td class="thopcoes btn btn-block" onclick=""><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+                    <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <div class="bg"></div>
-
-
     <br>
+
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>

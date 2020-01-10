@@ -1,4 +1,5 @@
 var id;
+var dia = [];
 var mdtemp = [];
 var tempmax = [];
 var tempmin = [];
@@ -7,9 +8,8 @@ var desc = [];
 function atualizaTabelas(dados) {
     fazMedia(dados);
     var i = 0;
-    while (0 < 5){
-        document.getElementById(('dia'+ i)).innerHTML = dados.name + ", " + dados.sys.country;
-        i++;
+    for (let i = 0; i < 5; i++) {
+        document.getElementById('thdia' + i).innerHTML = dados.city.name + ", " + dados.city.country;
     }
 }
 
@@ -64,32 +64,37 @@ function fazMedia(dados) {
     var c = 0;
     var divide = dados.list[0].dt_txt.split(" ");
     var dt1 = divide[0];
-    while (i < 5){
-        console.log(mdtemp[i]);
-        mdtemp[i] = 0;
-        tempmax[i] = 0;
-        tempmin[i] = 100;
-        c = 0;
-        while (dt1 === (dados.list[j].dt_txt.split(" "))[0]){
-            mdtemp[i] += dados.list[j].main.temp;
-            if (tempmax[i] < dados.list[j].main.temp_max){
-                tempmax[i] = dados.list[j].main.temp_max;
+    while (true) {
+        try {
+            console.log(mdtemp[i]);
+            mdtemp[i] = 0;
+            tempmax[i] = 0;
+            tempmin[i] = 100;
+            c = 0;
+            while (dt1 === (dados.list[j].dt_txt.split(" "))[0]) {
+                mdtemp[i] += dados.list[j].main.temp;
+                if (tempmax[i] < dados.list[j].main.temp_max) {
+                    tempmax[i] = dados.list[j].main.temp_max;
+                }
+                if (tempmin[i] > dados.list[j].main.temp_min) {
+                    tempmin[i] = dados.list[j].main.temp_min;
+                }
+                desc[i] = dados.list[j].weather[0].description;
+                console.log(dados.list[j].weather[0].description);
+                c += 1;
+                console.log(dados.list[j].main.temp + "  " + j + "  " + (dados.list[j].dt_txt.split(" "))[1]);
+                j++;
             }
-            if (tempmin[i] > dados.list[j].main.temp_min){
-                tempmin[i] = dados.list[j].main.temp_min;
-            }
-            desc[i] = dados.list[j].weather[0].description;
-            console.log(dados.list[j].weather[0].description);
-            c += 1;
-            console.log(dados.list[j].main.temp + "  " + j + "  " + (dados.list[j].dt_txt.split(" "))[1]);
-            j++;
+            mdtemp[i] /= c;
+            divide = dados.list[j].dt_txt.split(" ");
+            dt1 = divide[0];
+            i++;
+            console.log(i);
+            console.log(mdtemp + tempmax + tempmin);
+        } catch (e) {
+            break;
+
         }
-        mdtemp[i] /= c;
-        divide = dados.list[j].dt_txt.split(" ");
-        dt1 = divide[0];
-        i++;
-        console.log(i);
-        console.log(mdtemp+tempmax+tempmin);
     }
     console.log(mdtemp);
     console.log(tempmax);
