@@ -17,6 +17,7 @@ function atualizaTabelas(dados) {
         document.getElementById('icon' + i).setAttribute("src", "http://openweathermap.org/img/w/" + icon[i] + ".png");
         document.getElementById('tdinfo' + i).innerHTML = letraGrande(desc[i]);
     }
+    document.getElementById('tabela').style.display = "block";
 }
 
 function letraGrande(str) {
