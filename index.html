@@ -4,71 +4,87 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <title>Home</title>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-        <a class="navbar-brand" href="index.html">Home</a>
-        <ul class="navbar-nav">
-            <li class="nav-item ">
-                <a class="nav-link" href="forecast.html">Forecast 5 dias/ 3 horas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="favoritos.html">Favoritos</a>
-            </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand active" href="index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="forecast.html">Forecast <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favoritos.html">Favoritos</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="container input-group mb-3">
-        <div class="input-group-prepend">
-            <button class="btn btn-outline-primary" type="button" onclick="btnPesquisar()">Pesquisar</button>
-        </div>
-        <input type="text" class="form-control" id="city" placeholder="Ex.: Lisboa, PT">
+
+
+<div class="container input-group mb-3">
+    <div class="input-group-prepend">
+        <button class="btn btn-outline-dark" type="button" onclick="btnPesquisar()">Pesquisar</button>
     </div>
+    <input type="text" class="form-control btn-outline-dark border-dark" id="city" placeholder="Ex.: Lisboa, PT">
+</div>
+
+
+
 
     <div class="container">
-        <table class="table table-hover table-striped table-bordered table-condensed" align="center">
-            <tr>
-                <th>Cidade/País</th>
-                <th colspan="2">Dados</th>
-            </tr>
-            <tr id="linhahistorico" style="display: none;">
-                <td></td>
-                <td style="text-align: center">Não há histórico</td>
-                <td class="thopcoes"></td>
-            </tr>
-            <tr id="linha1" style="display: none;">
-                <td><a class="btn btn-block" id="local1"></a></td>
-                <td><p>Temperatura: <span id="tmp1"></span>°C</p><p><img id="icon1" src="" alt="Icon do Tempo"><span id="dsc1"></span></p></td>
-                <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
-            </tr>
-            <tr id="linha2" style="display: none;">
-                <td><a class="btn btn-block" id="local2"></a></td>
-                <td><p>Temperatura: <span id="tmp2"></span>°C</p><p><img id="icon2" src="" alt="Icon do Tempo"><span id="dsc2"></span></p></td>
-                <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
-            </tr>
-            <tr id="linha3" style="display: none;">
-                <td><a class="btn btn-block" id="local3"></a></td>
-                <td><p>Temperatura: <span id="tmp3"></span>°C</p><p><img id="icon3" src="" alt="Icon do Tempo"><span id="dsc3"></span></p></td>
-                <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
-            </tr>
-            <tr id="linha4" style="display: none;">
-                <td><a class="btn btn-block" id="local4"></a></td>
-                <td><p>Temperatura: <span id="tmp4"></span>°C</p><p><img id="icon4" src="" alt="Icon do Tempo"><span id="dsc4"></span></p></td>
-                <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
-            </tr>
-            <tr id="linha5" style="display: none;">
-                <td><a class="btn btn-block" id="local5"></a></td>
-                <td><p>Temperatura: <span id="tmp5"></span>°C</p><p><img id="icon5" src="" alt="Icon do Tempo"><span id="dsc5"></span></p></td>
-                <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
-            </tr>
-            <tr id="linha6" style="display: none;">
-                <td><a class="btn btn-block" id="local6"></a></td>
-                <td><p>Temperatura: <span id="tmp6"></span>°C</p><p><img id="icon6" src="" alt="Icon do Tempo"><span id="dsc6"></span></p></td>
-                <td class="thopcoes btn btn-block" onclick="">ADICIONA FAV.</td>
-            </tr>
+        <table class="table table-striped table-bordered table-sm" align="center">
+            <thead>
+                <tr align="center" style="background: lightgray">
+                    <th>Cidade/País</th>
+                    <th colspan="2">Dados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="linhahistorico" style="display: none;">
+                    <td style="text-align: center" colspan="3">Não há histórico</td>
+                </tr>
+                <tr id="linha1" style="display: none;">
+                    <td class="align-middle" align="center" id="local1"></td>
+                    <td class="align-middle" align="center">Temperatura: <span id="tmp1"></span>°C<p><img id="icon1" src="" alt="Icon do Tempo"><span id="dsc1"></span></p></td>
+                    <td class="align-middle" align="center" ><div class="btn-group-vertical btn-block"><button id="fav1" type="button" class="btn">Favorito</button><a id="det1" type="button" class="btn btn-outline-dark">Detalhes</a></div></td>
+                </tr>
+                <tr id="linha2" style="display: none;">
+                    <td class="align-middle" align="center" id="local2"></td>
+                    <td class="align-middle" align="center">Temperatura: <span id="tmp2"></span>°C<p><img id="icon2" src="" alt="Icon do Tempo"><span id="dsc2"></span></p></td>
+                    <td class="align-middle" align="center"><div class="btn-group-vertical btn-block"><button id="fav2" type="button" class="btn">Favorito</button><a id="det2" type="button" class="btn btn-outline-dark">Detalhes</a></div></td>
+                </tr>
+                <tr id="linha3" style="display: none;">
+                    <td class="align-middle" align="center" id="local3"></td>
+                    <td class="align-middle" align="center">Temperatura: <span id="tmp3"></span>°C<p><img id="icon3" src="" alt="Icon do Tempo"><span id="dsc3"></span></p></td>
+                    <td class="align-middle" align="center"><div class="btn-group-vertical btn-block"><button id="fav3" type="button" class="btn">Favorito</button><a id="det3" type="button" class="btn btn-outline-dark">Detalhes</a></div></td>
+                </tr>
+                <tr id="linha4" style="display: none;">
+                    <td class="align-middle" align="center" id="local4"></td>
+                    <td class="align-middle" align="center">Temperatura: <span id="tmp4"></span>°C<p><img id="icon4" src="" alt="Icon do Tempo"><span id="dsc4"></span></p></td>
+                    <td class="align-middle" align="center"><div class="btn-group-vertical btn-block"><button id="fav4" type="button" class="btn">Favorito</button><a id="det4" type="button" class="btn btn-outline-dark">Detalhes</a></div></td>
+                </tr>
+                <tr id="linha5" style="display: none;">
+                    <td class="align-middle" align="center" id="local5"></td>
+                    <td class="align-middle" align="center">Temperatura: <span id="tmp5"></span>°C<p><img id="icon5" src="" alt="Icon do Tempo"><span id="dsc5"></span></p></td>
+                    <td class="align-middle" align="center"><div class="btn-group-vertical btn-block"><button id="fav5" type="button" class="btn">Favorito</button><a id="det5" type="button" class="btn btn-outline-dark">Detalhes</a></div></td>
+                </tr>
+                <tr id="linha6" style="display: none;">
+                    <td class="align-middle" align="center" id="local6"></td>
+                    <td class="align-middle" align="center">Temperatura: <span id="tmp6"></span>°C<p><img id="icon6" src="" alt="Icon do Tempo"><span id="dsc6"></span></p></td>
+                    <td class="align-middle" align="center"><div class="btn-group-vertical btn-block"><button id="fav6" type="button" class="btn">Favorito</button><a id="det6" type="button" class="btn btn-outline-dark">Detalhes</a></div></td>
+                </tr>
+
+            </tbody>
+
         </table>
     </div>
 

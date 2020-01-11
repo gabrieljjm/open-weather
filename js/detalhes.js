@@ -24,14 +24,17 @@ function btnPesquisar() {
 }
 
 function show(data){
-    return  "<h3><strong>Cidade/País</strong>: "+ data.name  +"</h3>" +
-        "<h3><strong>Tempo</strong>: "+ data.weather[0].main +"</h3>" +
-        "<h3><strong>Descrição</strong>: "+ data.weather[0].description +"</h3>" +
-        "<h3><strong>Temperatura (celsius) </strong>: "+ data.main.temp +"º "+"</h3>" +
-        "<h3><strong>Humidade</strong>: "+ data.main.humidity +"% "+"</h3>" +
-        "<h3><strong>Temperatura mínima</strong>: "+ data.main.temp_min +" º"+"</h3>" +
-        "<h3><strong>Temperatura máxima</strong>: "+ data.main.temp_max +" º"+"</h3>"
-
+    return  "<h5><strong>Cidade/País</strong>: "+ data.name  +"</h5>" +
+        "<h5><strong>Longitude</strong>: "+ data.coord.lon +"</h5>" +
+        "<h5><strong>Latitude</strong>: "+ data.coord.lat +"</h5>"+
+        "<h5><strong>Tempo</strong>: "+ data.weather[0].main +"</h5>" +
+        "<h5><strong>Descrição</strong>: "+ data.weather[0].description +"</h5>" +
+        "<h5><strong>Temperatura (celsius) </strong>: "+ data.main.temp +" ºC"+"</h5>" +
+        "<h5><strong>Humidade</strong>: "+ data.main.humidity +"% "+"</h5>" +
+        "<h5><strong>Temperatura mínima</strong>: "+ data.main.temp_min +" ºC"+"</h5>" +
+        "<h5><strong>Temperatura máxima</strong>: "+ data.main.temp_max +" ºC"+"</h5>"+
+        "<h5><strong>Wind Speed</strong>: "+ data.wind.speed +" metros por segundo"+"</h5>"+
+        "<h5><strong>Percentagem de nuvens</strong>: "+ data.clouds.all +" %"+"</h5>"
 
 }
 

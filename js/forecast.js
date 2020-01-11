@@ -11,13 +11,50 @@ function atualizaTabelas(dados) {
     document.getElementById('info2').innerHTML = "Lat " + dados.city.coord.lat+ ", Lon "  + dados.city.coord.lon;
     for (let i = 0; i < 5; i++) {
         document.getElementById('thdia' + i).innerHTML = "<h5>" + dia[i] + "</h5>";
-        document.getElementById('tdmin' + i).innerHTML = tempmin[i].toFixed(1);
-        document.getElementById('tdmed' + i).innerHTML = mdtemp[i].toFixed(1);
-        document.getElementById('tdmax' + i).innerHTML = tempmax[i].toFixed(1);
+        document.getElementById('tdmin' + i).innerHTML = tempmin[i].toFixed(2) + " °C";
+        document.getElementById('tdmed' + i).innerHTML = mdtemp[i].toFixed(2) + " °C";
+        document.getElementById('tdmax' + i).innerHTML = tempmax[i].toFixed(2) + " °C";
         document.getElementById('icon' + i).setAttribute("src", "http://openweathermap.org/img/w/" + icon[i] + ".png");
         document.getElementById('tdinfo' + i).innerHTML = letraGrande(desc[i]);
     }
-    document.getElementById('tabela').style.display = "block";
+    var i = 0;
+    var j = 0;
+    var c = 0;
+    var tr3dia;
+    var tr3dados;
+    var tr3horas;
+    var divide = dados.list[0].dt_txt.split(" ");
+    var dt1 = divide[0];
+    while (true){
+        try{
+            tr3dia = document.getElementById("tr3dia").insertCell(-1);
+            tr3dia.innerHTML = dados.list[j].dt_txt.split(" ")[0];
+            c = 0;
+            try{
+                while (dt1 === (dados.list[j].dt_txt.split(" "))[0]) {
+                    tr3dados = document.getElementById("tr3dados").insertCell(-1);
+                    tr3dados.innerHTML = dados.list[j].main.temp + "°C";
+                    tr3horas = document.getElementById("tr3horas").insertCell(-1);
+                    tr3horas.innerHTML = dados.list[j].dt_txt.split(" ")[1].split(":")[0]+":"+dados.list[j].dt_txt.split(" ")[1].split(":")[1];
+                    c +=1;
+                    j++;
+                    console.log(j);
+                }
+            }catch (e) {
+
+            }
+            console.log(c);
+            tr3dia.setAttribute("colspan", c);
+            divide = dados.list[j].dt_txt.split(" ");
+            dt1 = divide[0];
+            i++;
+        }catch (e) {
+            break;
+        }
+
+    }
+    document.getElementById('tabeladias').style.display = "block";
+    document.getElementById('tabelahoras').style.display = "block";
 }
 
 function letraGrande(str) {
@@ -64,11 +101,8 @@ function recebeOpenWeather(cidade) {
         type:"GET",
         dataType:"json",
         success: function(dadosOpenWeather){
-            //existeLocalStorage
             console.log(dadosOpenWeather);
             atualizaTabelas(dadosOpenWeather);
-            //var media = getMedia(dadosOpenWeather);
-            //atualizaTabela1(dadosOpenWeather);
         }
     });
 }
@@ -81,7 +115,6 @@ function fazMedia(dados, dia, mdtemp, tempmax, tempmin, desc, icon) {
     var dt1 = divide[0];
     while (true) {
         try {
-            console.log(mdtemp[i]);
             mdtemp[i] = 0;
             tempmax[i] = 0;
             tempmin[i] = 100;
@@ -97,25 +130,17 @@ function fazMedia(dados, dia, mdtemp, tempmax, tempmin, desc, icon) {
                 }
                 desc[i] = dados.list[j].weather[0].description;
                 icon[i] = dados.list[j].weather[0].icon;
-                console.log(dados.list[j].weather[0].description);
                 c += 1;
-                console.log(dados.list[j].main.temp + "  " + j + "  " + (dados.list[j].dt_txt.split(" "))[1]);
                 j++;
             }
             mdtemp[i] /= c;
             divide = dados.list[j].dt_txt.split(" ");
             dt1 = divide[0];
             i++;
-            console.log(i);
-            console.log(mdtemp + tempmax + tempmin);
         } catch (e) {
             break;
         }
     }
-    console.log(mdtemp);
-    console.log(tempmax);
-    console.log(tempmin);
-    console.log(desc);
 }
 
 

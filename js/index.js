@@ -2,6 +2,32 @@ $(document).ready(atualizaTabela())
 
 setInterval(atualizaTabela, 10000000);
 
+function adFavorito(cidade) {
+    var resultado;
+    if(localStorage) {
+        resultado = JSON.parse(localStorage.getItem('fav'));
+        if(resultado == null) {
+            var inserir = {};
+            eval("inserir.FAV"+cidade+"= '"+cidade+"';");
+            localStorage.setItem('fav', JSON.stringify(inserir));
+        }else {
+            if (eval("resultado.FAV"+cidade+"=="+cidade)){
+                console.log(resultado);
+                console.log(resultado.length);
+                console.log("ja existe");
+                eval("delete resultado.FAV"+cidade+";");
+                localStorage.setItem('fav', JSON.stringify(resultado));
+            }else{
+                eval("resultado.FAV"+cidade+"= '"+cidade+"';");
+                localStorage.setItem('fav', JSON.stringify(resultado));
+            }
+        }
+    } else {
+        alert("Desculpe, o seu navegador não suporta local storage.");
+    }
+    atualizaTabela();
+}
+
 function updateOpenWeather(cidade, linha){
     $.ajax({
         url:'http://api.openweathermap.org/data/2.5/weather?id=' + cidade + "&units=metric&lang=pt" + "&APPID=0799ebbcad862deddeeebe1f4ccc65d7",
@@ -15,7 +41,23 @@ function updateOpenWeather(cidade, linha){
 
 function atualizaLinha(dados, linha) {
     document.getElementById(('local'+ linha)).innerHTML = dados.name + ", " + dados.sys.country;
-    document.getElementById(('local'+ linha)).setAttribute("href", "detalhes.html?id=" + dados.id);
+    document.getElementById(('det'+ linha)).setAttribute("href", "detalhes.html?id=" + dados.id);
+    if (localStorage){
+        resultado = JSON.parse(localStorage.getItem('fav'));
+        if(resultado == null) {
+            document.getElementById(('fav'+ linha)).classList.remove("btn-danger");
+            document.getElementById(('fav'+ linha)).classList.add("btn-outline-dark");
+        }else {
+            if (eval("resultado.FAV"+dados.id+"=="+dados.id)){
+                document.getElementById(('fav'+ linha)).classList.remove("btn-outline-dark");
+                document.getElementById(('fav'+ linha)).classList.add("btn-danger");
+            }else{
+                document.getElementById(('fav'+ linha)).classList.remove("btn-danger");
+                document.getElementById(('fav'+ linha)).classList.add("btn-outline-dark");
+            }
+        }
+    }
+    document.getElementById(('fav'+ linha)).setAttribute("onclick", "adFavorito(" + dados.id + ")");
     document.getElementById(('tmp' + linha)).innerHTML = dados.main.temp;
     document.getElementById(('icon' + linha)).setAttribute("src", "http://openweathermap.org/img/w/" + dados.weather[0].icon + ".png");
     document.getElementById(('dsc' + linha)).innerHTML = letraGrande(dados.weather[0].description);
@@ -62,9 +104,10 @@ function recebeOpenWeather(cidade) {
 }
 
 function atualizaLocalStorage(dados) {
-    if(localStorage) {
+    var resultado;
+    if (localStorage) {
         resultado = JSON.parse(localStorage.getItem('city'));
-        if(resultado == null || resultado.local1 == "" && resultado.local2 == "" && resultado.local3 == "" && resultado.local4 == "" && resultado.local5 == "" && resultado.local6 == "") {
+        if (resultado == null || resultado.local1 == "" && resultado.local2 == "" && resultado.local3 == "" && resultado.local4 == "" && resultado.local5 == "" && resultado.local6 == "") {
             var inserir = {};
             inserir.local1 = dados.id;
             inserir.local2 = "";
@@ -74,7 +117,7 @@ function atualizaLocalStorage(dados) {
             inserir.local6 = "";
             //Guardar dados
             localStorage.setItem('city', JSON.stringify(inserir));
-        }else {
+        } else {
             resultado = JSON.parse(localStorage.getItem('city'));
             resultado.local6 = resultado.local5;
             resultado.local5 = resultado.local4;
@@ -130,10 +173,7 @@ function atualizaTabela() {
     }
 }
 
-$( '#topheader .navbar a' ).on( 'click', function () {
-    $( '#topheader .navbar' ).find( 'li.active' ).removeClass( 'active' );
-    $( this ).parent( 'li' ).addClass( 'active' );
-});
+
 
 
 // "<td><a href=\"#\"><button type=\"button\" class=\"btn btn-default\"><span class=\"far fa-star\" aria-hidden=\"true\"></span> Adicionar Favoritos</button></a></td>"
