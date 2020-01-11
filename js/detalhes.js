@@ -24,17 +24,46 @@ function btnPesquisar() {
 }
 
 function show(data){
-    return  "<h5><strong>Cidade/País</strong>: "+ data.name  +"</h5>" +
-        "<h5><strong>Longitude</strong>: "+ data.coord.lon +"</h5>" +
-        "<h5><strong>Latitude</strong>: "+ data.coord.lat +"</h5>"+
-        "<h5><strong>Tempo</strong>: "+ data.weather[0].main +"</h5>" +
-        "<h5><strong>Descrição</strong>: "+ data.weather[0].description +"</h5>" +
-        "<h5><strong>Temperatura (celsius) </strong>: "+ data.main.temp +" ºC"+"</h5>" +
-        "<h5><strong>Humidade</strong>: "+ data.main.humidity +"% "+"</h5>" +
-        "<h5><strong>Temperatura mínima</strong>: "+ data.main.temp_min +" ºC"+"</h5>" +
-        "<h5><strong>Temperatura máxima</strong>: "+ data.main.temp_max +" ºC"+"</h5>"+
-        "<h5><strong>Wind Speed</strong>: "+ data.wind.speed +" metros por segundo"+"</h5>"+
-        "<h5><strong>Percentagem de nuvens</strong>: "+ data.clouds.all +" %"+"</h5>"
+    return  "<div class='container'>"+
+                "<h2>" + data.name  +", " + data.sys.country  + "</h2>"+
+            "</div>"+
+            "<p>"+ "Lat " + data.coord.lat + ", Lat " + data.coord.lon +"</p>"+
+            "<div class='container'>"+
+                "<table class='table table-striped table-bordered table-sm' align='center' style=\'width: 600px'>"+
+                    "<thead>"+
+                        "<tr align='center' style='background: lightgray'>"+
+                        "</tr>"+
+                    "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td align='center'><strong>Descrição</td></strong>"+
+                            "<td align='center'> "+ data.weather[0].description +"</td>"+
+                        "</tr>"+
+                        "<tr>"+
+                            "<td align='center'><strong>Temperatura (celsius)</td></strong>"+
+                            "<td align='center'> "+ data.main.temp + " ºC" +"</td>"+
+                        "</tr>"+
+                        "<tr>"+
+                            "<td align='center'><strong>Humidade</td></strong>"+
+                            "<td align='center'> "+ data.main.humidity +"%" +"</td>"+
+                        "</tr>"+
+                        "<tr>"+
+                            "<td align='center'><strong>Temperatura mín. e máx.</td></strong>"+
+                            "<td align='center'> "+ data.main.temp_min + " ºC" +", " + data.main.temp_max + " ºC" +"</td>"+
+                        "</tr>"+
+                        "<tr>"+
+                            "<td align='center'><strong>Velocidade do vento</td></strong>"+
+                            "<td align='center'> "+ data.wind.speed +" metros por segundo"+"</td>"+
+                        "</tr>"+
+                        "<tr>"+
+                            "<td align='center'><strong>Percentagem de nuvens</td></strong>"+
+                            "<td align='center' id='infoTeste'> "+ data.clouds.all +"%"+"</td>"+
+                        "</tr>"+
+                    "</tbody>"+
+                "</table>"+
+            "</div>"
+
+    document.getElementById('infoTeste' + i).innerHTML = letraGrande(desc[i]);
 
 }
 
@@ -70,4 +99,13 @@ function recebeURL() {
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+function letraGrande(str) {
+    var i = 0;
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
 }

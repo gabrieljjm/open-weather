@@ -1,4 +1,8 @@
 function atualizaTabelas(dados) {
+    document.getElementById("tr3dia").innerHTML = "";
+    document.getElementById("tr3dados").innerHTML = "";
+    document.getElementById("tr3horas").innerHTML = "";
+
     var dia = [];
     var mdtemp = [];
     var tempmax = [];
@@ -65,17 +69,7 @@ function letraGrande(str) {
     return splitStr.join(' ');
 }
 
-function show(data){
-    return  "<h3><strong>Cidade/País</strong>: "+ data.city.name+ ", "  + data.city.country +" </h3>"
-                +"<br>"+
-            "<h4><strong>Temperatura minima</strong>: "+  data.list[0].main.temp_min +" </h4>"+
-             "<h4><strong>Temperatura máxima</strong>: "+  data.list[0].main.temp_max +" </h4>"+
-             "<h4><strong>Data/hora</strong>: "+  data.list[0].dt_txt +" </h4>"+
-            "<br>"+
-            "<h4><strong>Temperatura minima</strong>: "+  data.list[1].main.temp_min +" </h4>"+
-            "<h4><strong>Temperatura máxima</strong>: "+  data.list[1].main.temp_max +" </h4>"+
-            "<h4><strong>Data/hora</strong>: "+  data.list[1].dt_txt +" </h4>"
-}
+
 
 // Botão Pesquisar
 function btnPesquisar() {

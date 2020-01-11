@@ -12,9 +12,6 @@ function adFavorito(cidade) {
             localStorage.setItem('fav', JSON.stringify(inserir));
         }else {
             if (eval("resultado.FAV"+cidade+"=="+cidade)){
-                console.log(resultado);
-                console.log(resultado.length);
-                console.log("ja existe");
                 eval("delete resultado.FAV"+cidade+";");
                 localStorage.setItem('fav', JSON.stringify(resultado));
             }else{
@@ -96,7 +93,6 @@ function recebeOpenWeather(cidade) {
         dataType:"json",
         success: function(dadosOpenWeather){
             //existeLocalStorage
-            console.log(dadosOpenWeather)
             atualizaLocalStorage(dadosOpenWeather)
             atualizaTabela(dadosOpenWeather)
         }
@@ -118,14 +114,17 @@ function atualizaLocalStorage(dados) {
             //Guardar dados
             localStorage.setItem('city', JSON.stringify(inserir));
         } else {
-            resultado = JSON.parse(localStorage.getItem('city'));
-            resultado.local6 = resultado.local5;
-            resultado.local5 = resultado.local4;
-            resultado.local4 = resultado.local3;
-            resultado.local3 = resultado.local2;
-            resultado.local2 = resultado.local1;
-            resultado.local1 = dados.id;
-            localStorage.setItem('city', JSON.stringify(resultado));
+            if (resultado.local1 == dados.id || resultado.local2 == dados.id || resultado.local3 == dados.id || resultado.local4 == dados.id || resultado.local5 == dados.id || resultado.local6 == dados.id){
+            }else{
+                resultado.local6 = resultado.local5;
+                resultado.local5 = resultado.local4;
+                resultado.local4 = resultado.local3;
+                resultado.local3 = resultado.local2;
+                resultado.local2 = resultado.local1;
+                resultado.local1 = dados.id;
+                localStorage.setItem('city', JSON.stringify(resultado));
+            }
+
         }
     } else {
         alert("Desculpe, o seu navegador não suporta local storage.");

@@ -8,71 +8,43 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="forecast.html">Forecast <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="favoritos.html">Favoritos</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-    <div class="container">
-        <center><h1>Favoritos</h1></center>
-    </div>
-
-    <br>
-    <br>
-
-   <div class="container">
-        <div class="tab tab-1">
-            <table align="center">
-                <tr>
-                    <th>Cidade/País</th>
-                    <th>Opções</th>
-
-                </tr>
-                <tr>
-                    <td id="local1"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td id="local2"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td id="local3"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td id="local4"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td id="local5"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td id="local6"></td>
-                    <td></td>
-                </tr>
-            </table>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="forecast.html">Forecast <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="favoritos.html">Favoritos</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+
+    <div id="tabelafav" class="container" align="center">
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr align="center" style="background: lightgray">
+                    <th>Cidade/País</th>
+                    <th colspan="2">Dados</th>
+                </tr>
+            </thead>
+            <tr id="linhasemfav" style="display: none;">
+                <td style="text-align: center" colspan="3">Ainda não adicionou locais aos Favoritos!</td>
+            </tr>
+            <tbody id="corpo" style="display: none;" align="center" >
+
+            </tbody>
+        </table>
     </div>
 
-
-
-</body>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/favoritos.js"></script>
+</body>
 </html>
