@@ -1,16 +1,30 @@
-var id;
-var dia = [];
-var mdtemp = [];
-var tempmax = [];
-var tempmin = [];
-var desc = [];
-
 function atualizaTabelas(dados) {
-    fazMedia(dados);
+    var dia = [];
+    var mdtemp = [];
+    var tempmax = [];
+    var tempmin = [];
+    var desc = [];
+    var icon = [];
+    fazMedia(dados, dia, mdtemp, tempmax, tempmin, desc, icon);
     var i = 0;
+    document.getElementById('info1').innerHTML = dados.city.name+ ", "  + dados.city.country;
+    document.getElementById('info2').innerHTML = "Lat " + dados.city.coord.lat+ ", Lon "  + dados.city.coord.lon;
     for (let i = 0; i < 5; i++) {
-        document.getElementById('thdia' + i).innerHTML = dados.city.name + ", " + dados.city.country;
+        document.getElementById('thdia' + i).innerHTML = "<h5>" + dia[i] + "</h5>";
+        document.getElementById('tdmin' + i).innerHTML = tempmin[i].toFixed(1);
+        document.getElementById('tdmed' + i).innerHTML = mdtemp[i].toFixed(1);
+        document.getElementById('tdmax' + i).innerHTML = tempmax[i].toFixed(1);
+        document.getElementById('icon' + i).setAttribute("src", "http://openweathermap.org/img/w/" + icon[i] + ".png");
+        document.getElementById('tdinfo' + i).innerHTML = letraGrande(desc[i]);
     }
+}
+
+function letraGrande(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
 }
 
 function show(data){
@@ -58,7 +72,7 @@ function recebeOpenWeather(cidade) {
     });
 }
 
-function fazMedia(dados) {
+function fazMedia(dados, dia, mdtemp, tempmax, tempmin, desc, icon) {
     var i = 0;
     var j = 0;
     var c = 0;
@@ -73,6 +87,7 @@ function fazMedia(dados) {
             c = 0;
             while (dt1 === (dados.list[j].dt_txt.split(" "))[0]) {
                 mdtemp[i] += dados.list[j].main.temp;
+                dia[i] = (dados.list[j].dt_txt.split(" "))[0];
                 if (tempmax[i] < dados.list[j].main.temp_max) {
                     tempmax[i] = dados.list[j].main.temp_max;
                 }
@@ -80,6 +95,7 @@ function fazMedia(dados) {
                     tempmin[i] = dados.list[j].main.temp_min;
                 }
                 desc[i] = dados.list[j].weather[0].description;
+                icon[i] = dados.list[j].weather[0].icon;
                 console.log(dados.list[j].weather[0].description);
                 c += 1;
                 console.log(dados.list[j].main.temp + "  " + j + "  " + (dados.list[j].dt_txt.split(" "))[1]);
@@ -93,7 +109,6 @@ function fazMedia(dados) {
             console.log(mdtemp + tempmax + tempmin);
         } catch (e) {
             break;
-
         }
     }
     console.log(mdtemp);

@@ -130,4 +130,10 @@ function atualizaTabela() {
     }
 }
 
+$( '#topheader .navbar a' ).on( 'click', function () {
+    $( '#topheader .navbar' ).find( 'li.active' ).removeClass( 'active' );
+    $( this ).parent( 'li' ).addClass( 'active' );
+});
+
+
 // "<td><a href=\"#\"><button type=\"button\" class=\"btn btn-default\"><span class=\"far fa-star\" aria-hidden=\"true\"></span> Adicionar Favoritos</button></a></td>"
